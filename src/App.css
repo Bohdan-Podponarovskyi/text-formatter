@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+header {
+  min-height: 80px;
+  background-color: silver;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0 auto;
+}
+
+textarea {
+  min-width: 1000px;
+  min-height: 300px;
+}
