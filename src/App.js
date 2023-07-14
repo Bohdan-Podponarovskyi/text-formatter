@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
+import Button from '@mui/material/Button';
+import TextareaAutosize from '@mui/base/TextareaAutosize';
+import {Grid, List, ListItem, ListItemText, Typography} from "@mui/material";
 
 function App() {
     const [text, setText] = useState('');
@@ -42,21 +45,49 @@ function App() {
                 <h1>URLs Cleaner</h1>
             </header>
             <h2>Enter URLs</h2>
-            <textarea
+            <TextareaAutosize
+                aria-label="empty textarea"
                 value={text}
                 onChange={handleChange}
-                rows="10"
-                cols="50"
-                // placeholder="Введіть URL"
+                minRows={20}
+                style={{ width: 1000 }}
             />
-            <div className="output">
-                {cleanedUrls.map((url, index) => (
-                    <p key={index}>{url}</p>
-                ))}
-                {cleanedUrls.length > 0 && (
-                    <button onClick={copyCleanedUrls}>Copy cleaned URLs</button>
-                )}
-            </div>
+            {/*<Grid container spacing={2}>*/}
+            <Grid item xs={12} md={6}>
+                <Typography sx={{mt: 4, mb: 2}} variant="h6" component="div">
+                    Text only
+                </Typography>
+
+
+                <List>
+
+                    {cleanedUrls.map((url, index) => (
+                        <ListItem key={index}>
+                            <ListItemText>{url}</ListItemText>
+                        </ListItem>
+                    ))}
+                    {cleanedUrls.length > 0 && (
+                        <Button variant="contained" onClick={copyCleanedUrls}>Copy cleaned URLs</Button>
+                    )}
+
+                    {/*<ListItem>*/}
+                    {/*    <ListItemText*/}
+                    {/*        primary="Single-line item"*/}
+
+                    {/*    />*/}
+                    {/*</ListItem>*/}
+                </List>
+            </Grid>
+
+
+            {/*<div className="output">*/}
+            {/*    {cleanedUrls.map((url, index) => (*/}
+            {/*        <p key={index}>{url}</p>*/}
+            {/*    ))}*/}
+            {/*    {cleanedUrls.length > 0 && (*/}
+            {/*        <Button variant="contained" onClick={copyCleanedUrls}>Copy cleaned URLs</Button>*/}
+            {/*    )}*/}
+            {/*</div>*/}
         </div>
     );
 }
